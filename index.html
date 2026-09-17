@@ -12,15 +12,16 @@
 <div class="site">
   <header><a class="brand" href="#top"><span>N</span>NativeToEnglish</a><nav><a href="#product">Product</a><a href="#purpose">Purpose</a></nav><a class="access" href="#beta">Request access <b>→</b></a></header>
   <main id="top">
-    <section class="hero"><p class="kicker">A calmer way to write in English</p><h1>Write freely.<br /><em>Be understood clearly.</em></h1><p class="intro">NativeToEnglish turns Bangla, Banglish, and imperfect English into clear writing—right where you are already typing.</p><div class="actions"><a class="button" href="#beta">Request private beta <b>→</b></a><span>Web extension · Android</span></div></section>
-    <section class="product" id="product" aria-label="NativeToEnglish product preview">
-      <div class="product-top"><span class="live-dot"></span><p>NativeToEnglish in any text box</p><span>Private beta</span></div>
-      <div class="product-body">
-        <div class="draft-pane"><div class="pane-label">WHAT YOU WROTE</div><p>ami apnar sathe next week a meeting korte chai</p><div class="cursor"></div><small>Banglish detected</small></div>
-        <div class="transform"><div class="transform-mark">✦</div><span>Choose your outcome</span><div class="transform-line"></div></div>
-        <div class="result-pane"><div class="result-header"><span class="pane-label">WHAT YOU MEAN</span><span class="ready">Ready</span></div><p>I’d like to arrange a meeting with you next week.</p><div class="modes"><span>Native</span><span class="active">English</span><span>Formal</span><span>Academic</span></div><div class="replace"><span>Replace your draft</span><b>↵</b></div></div>
+    <section class="hero" id="product">
+      <div class="hero-copy"><p class="kicker">A clearer way to write</p><h1>Write naturally.<br /><em>Sound like yourself.</em></h1><p class="intro">NativeToEnglish turns Bangla, Banglish, and imperfect English into writing that fits the moment—right inside the text box you are using.</p><div class="actions"><a class="button" href="#beta">Request private beta <b>→</b></a><span>Web extension · Android</span></div></div>
+      <div class="hero-demo" aria-label="Animated NativeToEnglish example">
+        <div class="demo-window"><div class="demo-top"><div class="demo-dots"><i></i><i></i><i></i></div><span>Writing a message</span><span class="demo-lock">⌁</span></div>
+          <div class="demo-editor"><p class="pane-label">YOUR DRAFT</p><p class="demo-source" aria-live="polite">ami apnar sathe next week a meeting korte chai</p><span class="typing-cursor"></span></div>
+          <div class="demo-toolbar"><span class="demo-spark">✦</span><span class="detected">Banglish detected</span><span class="toolbar-separator"></span><span class="processing">Improving your draft</span><span class="toolbar-arrow">→</span></div>
+          <div class="demo-result"><div class="result-line"><p class="pane-label">NATIVETOENGLISH</p><span class="ready">Ready</span></div><p class="demo-output">I’d like to arrange a meeting with you next week.</p><div class="modes"><span>Native</span><span class="active">English</span><span>Formal</span><span>Academic</span></div></div>
+        </div>
+        <div class="demo-caption"><span>1</span> Write your way <i></i><span>2</span> Choose the tone <i></i><span>3</span> Keep writing</div>
       </div>
-      <div class="product-bottom"><p>Keep your meaning. Choose the clarity.</p><div><span>বাংলা</span><i></i><span>Banglish</span><i></i><span>English</span></div></div>
     </section>
     <section class="statement"><p>You already know what you want to say.<br /><em>We help the world understand it.</em></p></section>
     <section class="principles"><div class="principle-heading"><p class="kicker">Designed around real writing</p><h2>Not another app.<br />A better moment <em>inside every app.</em></h2></div><div class="principle-list"><article><span>01</span><div><h3>Start in your language</h3><p>Write in Bangla, Banglish, or rough English. You do not need to translate yourself before you begin.</p></div></article><article><span>02</span><div><h3>Choose the right expression</h3><p>Translate, proofread, make it formal, or make it academic. The choice stays with you.</p></div></article><article><span>03</span><div><h3>Continue your flow</h3><p>Accept the result directly in the text box. No copying, pasting, or moving to a different tool.</p></div></article></div></section>
@@ -29,5 +30,31 @@
   </main>
   <footer><a class="brand" href="#top"><span>N</span>NativeToEnglish</a><p>Write freely. Be understood clearly.</p><a href="mailto:abdulhady.aariyan@gmail.com">Contact <b>↗</b></a></footer>
 </div>
+<script>
+  const examples = [
+    { source: "ami apnar sathe next week a meeting korte chai", detected: "Banglish detected", output: "I’d like to arrange a meeting with you next week.", mode: "English" },
+    { source: "i am agree with your idea", detected: "English detected", output: "I agree with your idea.", mode: "English" },
+    { source: "kal assignment submit korte parbo na", detected: "Banglish detected", output: "I will be unable to submit the assignment tomorrow.", mode: "Formal" }
+  ];
+  let exampleIndex = 0;
+  const source = document.querySelector(".demo-source");
+  const detected = document.querySelector(".detected");
+  const output = document.querySelector(".demo-output");
+  const modes = document.querySelectorAll(".modes span");
+  const windowEl = document.querySelector(".demo-window");
+  function showExample() {
+    windowEl.classList.add("is-changing");
+    setTimeout(() => {
+      exampleIndex = (exampleIndex + 1) % examples.length;
+      const next = examples[exampleIndex];
+      source.textContent = next.source;
+      detected.textContent = next.detected;
+      output.textContent = next.output;
+      modes.forEach((mode) => mode.classList.toggle("active", mode.textContent === next.mode));
+      windowEl.classList.remove("is-changing");
+    }, 340);
+  }
+  setInterval(showExample, 4200);
+</script>
 </body>
 </html>
