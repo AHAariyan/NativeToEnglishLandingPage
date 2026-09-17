@@ -30,6 +30,7 @@
 
   --accent: #0bb3bd;
   --brand-gradient: linear-gradient(100deg, #004ece 0%, #04faf7 52%, #1cf0a0 100%);
+  --cta-gradient: linear-gradient(105deg, #004ece 0%, #0566ad 55%, #0a7f8c 100%);
 
   --line: #e3e2da;
   --line-soft: #eeede6;
@@ -266,11 +267,11 @@ h2 {
     border-color 0.22s var(--ease), box-shadow 0.22s var(--ease);
 }
 
-.button span {
+.button span[aria-hidden="true"] {
   transition: transform 0.22s var(--ease);
 }
 
-.button:hover span {
+.button:hover span[aria-hidden="true"] {
   transform: translateX(3px);
 }
 
@@ -302,15 +303,46 @@ h2 {
   transform: translateY(-2px);
 }
 
-.button-light {
+.button-brand {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   flex: 0 0 auto;
-  background: var(--ink);
-  color: var(--paper);
+  padding: 18px 30px;
+  color: #ffffff;
+  font-size: 1rem;
+  background: var(--cta-gradient);
+  box-shadow: 0 10px 30px -12px color-mix(in srgb, #004ece 70%, transparent);
 }
 
-.button-light:hover {
+.button-brand > span {
+  position: relative;
+  z-index: 1;
+}
+
+.button-brand:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 18px 42px -14px color-mix(in srgb, #004ece 85%, transparent);
+}
+
+/* Sheen sweep on hover - suppressed under prefers-reduced-motion. */
+.button-brand::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 32%,
+    rgba(255, 255, 255, 0.3) 48%,
+    transparent 64%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.75s var(--ease);
+}
+
+.button-brand:hover::after {
+  transform: translateX(130%);
 }
 
 /* 3. Header ---------------------------------------------------------------- */
@@ -1035,11 +1067,16 @@ h2 {
 }
 
 .beta {
+  padding-bottom: clamp(84px, 11vw, 140px);
+}
+
+/* No panel here: a second card directly under the statement panel read as
+   two competing blocks. The gradient button carries the weight instead. */
+.beta-panel {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 48px;
-  padding-bottom: clamp(84px, 11vw, 140px);
+  gap: clamp(32px, 5vw, 56px);
 }
 
 .beta-copy h2 {
@@ -1161,11 +1198,11 @@ footer p {
     min-height: 140px;
   }
 
-  .beta {
+  .beta-panel {
     display: block;
   }
 
-  .button-light {
+  .button-brand {
     margin-top: 26px;
   }
 
