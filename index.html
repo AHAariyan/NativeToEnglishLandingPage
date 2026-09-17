@@ -2,79 +2,194 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>NativeToEnglish — Write naturally. Communicate clearly.</title>
     <meta
       name="description"
       content="NativeToEnglish helps you write clearly in every text box—starting from Bangla, Banglish, or imperfect English."
     />
-    <title>NativeToEnglish — Write naturally. Communicate clearly.</title>
+    <link rel="canonical" href="https://ahaariyan.github.io/NativeToEnglishLandingPage/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="NativeToEnglish" />
+    <meta property="og:title" content="NativeToEnglish — Write naturally. Communicate clearly." />
+    <meta
+      property="og:description"
+      content="Turn Bangla, Banglish, or imperfect English into writing that sounds like you—only clearer. Right where you already write."
+    />
+    <meta property="og:url" content="https://ahaariyan.github.io/NativeToEnglishLandingPage/" />
+    <meta property="og:image" content="https://ahaariyan.github.io/NativeToEnglishLandingPage/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="NativeToEnglish — Write naturally. Communicate clearly." />
+    <meta
+      name="twitter:description"
+      content="Turn Bangla, Banglish, or imperfect English into writing that sounds like you—only clearer."
+    />
+    <meta name="twitter:image" content="https://ahaariyan.github.io/NativeToEnglishLandingPage/og-image.png" />
+
+    <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0d1317" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=Noto+Sans+Bengali:wght@500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+
+    <script>
+      // Applied before first paint so a stored theme never flashes.
+      try {
+        const saved = localStorage.getItem("n2e-theme");
+        if (saved === "light" || saved === "dark") document.documentElement.dataset.theme = saved;
+      } catch (error) {
+        /* private browsing: fall back to the system theme */
+      }
+    </script>
   </head>
   <body>
-    <main>
-      <nav class="nav" aria-label="Main navigation">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" id="top">
+      <div class="shell header-inner">
         <a class="brand" href="#top" aria-label="NativeToEnglish home">
-          <span class="brand-mark">N</span>
-          <span>NativeToEnglish</span>
+          <img class="brand-mark" src="logo-mark.png" alt="" width="106" height="96" decoding="async" />
+          <span class="brand-name">NativeToEnglish</span>
         </a>
-        <a class="nav-link" href="#beta">Join private beta</a>
-      </nav>
+        <nav class="header-nav" aria-label="Main navigation">
+          <a class="nav-link" href="#how-it-works">How it works</a>
+          <button
+            class="theme-toggle"
+            type="button"
+            id="theme-toggle"
+            aria-label="Switch to dark theme"
+            aria-pressed="false"
+          >
+            <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="12" r="4.4" />
+              <path d="M12 2.6v2.4M12 19v2.4M2.6 12h2.4M19 12h2.4M5.4 5.4l1.7 1.7M16.9 16.9l1.7 1.7M18.6 5.4l-1.7 1.7M7.1 16.9l-1.7 1.7" />
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M20.2 14.6A8.6 8.6 0 1 1 9.4 3.8a6.9 6.9 0 0 0 10.8 10.8Z" />
+            </svg>
+          </button>
+          <a class="button button-primary button-sm" href="#beta">Join private beta</a>
+        </nav>
+      </div>
+    </header>
 
-      <section class="hero" id="top">
-        <p class="eyebrow">Your words, made clear</p>
-        <h1>Write naturally.<br /><em>Communicate clearly.</em></h1>
-        <p class="hero-copy">
-          NativeToEnglish helps you turn Bangla, Banglish, or imperfect English into writing that sounds like you—only clearer.
-        </p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#beta">Join the private beta <span aria-hidden="true">→</span></a>
-          <a class="button button-quiet" href="#how-it-works">See how it works</a>
+    <main id="main">
+      <section class="hero shell">
+        <div class="hero-copy-column">
+          <p class="eyebrow">Your words, made clear</p>
+          <h1>Write naturally.<br /><em>Communicate clearly.</em></h1>
+          <p class="hero-copy">
+            Bangla, Banglish, or rough English goes in.<br />Clear, professional English comes out.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#beta">Join the private beta <span aria-hidden="true">→</span></a>
+            <a class="button button-quiet" href="#how-it-works">See how it works</a>
+          </div>
+          <p class="availability">
+            <span class="availability-dot" aria-hidden="true"></span>
+            Available for the web and Android
+          </p>
         </div>
-        <p class="availability">Available for the web and Android</p>
-      </section>
 
-      <section class="demo" aria-label="NativeToEnglish example">
-        <div class="demo-window">
-          <div class="window-bar"><span></span><span></span><span></span><p>Write anywhere</p></div>
-          <div class="demo-content">
-            <div class="draft">
-              <span class="label">You write</span>
-              <p>ami kal apnar sathe meeting korte chai</p>
+        <div class="hero-demo-column">
+          <div class="demo-window" aria-label="NativeToEnglish example">
+            <div class="window-bar">
+              <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+              <p>Write anywhere</p>
             </div>
-            <div class="arrow" aria-hidden="true">↓</div>
-            <div class="result">
-              <span class="label">NativeToEnglish</span>
-              <p>I would like to meet with you tomorrow.</p>
-              <div class="mode-pills"><span>English</span><span>Formal</span><span>Academic</span></div>
+            <div class="demo-content">
+              <div class="draft">
+                <span class="label">You write</span>
+                <p class="draft-text" id="demo-draft">ami kal apnar sathe meeting korte chai</p>
+              </div>
+              <div class="transform-rule" aria-hidden="true">
+                <span class="transform-line"></span>
+                <span class="transform-badge" id="demo-status">Improve</span>
+                <span class="transform-line"></span>
+              </div>
+              <div class="result">
+                <span class="label">NativeToEnglish</span>
+                <p class="result-text" id="demo-result">I would like to meet with you tomorrow.</p>
+                <div class="mode-pills" role="tablist" aria-label="Rewrite goal">
+                  <button class="pill" type="button" role="tab" data-mode="native" aria-selected="false" tabindex="-1">Native</button>
+                  <button class="pill" type="button" role="tab" data-mode="english" aria-selected="true" tabindex="0">English</button>
+                  <button class="pill" type="button" role="tab" data-mode="formal" aria-selected="false" tabindex="-1">Formal</button>
+                  <button class="pill" type="button" role="tab" data-mode="academic" aria-selected="false" tabindex="-1">Academic</button>
+                </div>
+              </div>
             </div>
           </div>
+          <p class="demo-hint">Try a different goal →</p>
+        </div>
         </div>
       </section>
 
-      <section class="features" id="how-it-works">
+      <section class="surfaces shell" aria-label="NativeToEnglish in real apps">
+        <div class="surface-grid">
+          <figure class="surface surface-desktop" data-reveal>
+            <div class="mock mock-compose">
+              <div class="mock-bar"><span>New Message</span><span class="mock-bar-controls" aria-hidden="true">— □ ✕</span></div>
+              <div class="mock-field"><span>To</span><p>priya@studio.co</p></div>
+              <div class="mock-field"><span>Subject</span><p>Tomorrow’s call</p></div>
+              <div class="mock-body">
+                <p>ami kal apnar sathe meeting korte chai</p>
+                <span class="mock-caret" aria-hidden="true"></span>
+                <span class="mock-trigger" aria-hidden="true">Improve</span>
+              </div>
+              <div class="mock-card" aria-hidden="true">
+                <p class="mock-card-eyebrow">Native to English — Formal</p>
+                <p class="mock-card-text">I would like to meet with you tomorrow.</p>
+                <div class="mock-card-actions"><span class="is-primary">Use this</span><span>Keep mine</span></div>
+              </div>
+            </div>
+            <figcaption>In your inbox, beside the draft you already started.</figcaption>
+          </figure>
+
+          <figure class="surface surface-mobile" data-reveal>
+            <div class="mock mock-phone">
+              <div class="mock-notch" aria-hidden="true"></div>
+              <div class="mock-thread">
+                <p class="mock-bubble mock-bubble-out">Yes, I finished the first draft last night.</p>
+                <p class="mock-bubble mock-bubble-in">Are you free to talk this week?</p>
+                <p class="mock-bubble mock-bubble-out"><mark>ami kal apnar sathe meeting korte chai</mark></p>
+                <div class="mock-selection" aria-hidden="true">
+                  <span>Copy</span><span>Share</span><span class="is-primary">NativeToEnglish</span>
+                </div>
+              </div>
+            </div>
+            <figcaption>And on Android, from the text you selected.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="features shell" id="how-it-works">
         <p class="eyebrow">Made for real life</p>
         <div class="section-heading">
           <h2>One small action,<br />wherever you write.</h2>
           <p>Use it in messages, emails, forms, comments, and work documents—without starting over in another app.</p>
         </div>
         <div class="feature-grid">
-          <article>
+          <article data-reveal>
             <span class="feature-number">01</span>
             <h3>Start in your language</h3>
             <p>Write in Bangla, Banglish, or the English you already know. There is no “perfect first draft” required.</p>
           </article>
-          <article>
+          <article data-reveal>
             <span class="feature-number">02</span>
             <h3>Choose the right tone</h3>
             <p>Keep it native, make it clear English, or choose Formal and Academic writing when the situation needs it.</p>
           </article>
-          <article>
+          <article data-reveal>
             <span class="feature-number">03</span>
             <h3>Keep your meaning</h3>
             <p>NativeToEnglish improves the expression while protecting what you actually want to say.</p>
@@ -82,24 +197,32 @@
         </div>
       </section>
 
-      <section class="statement">
-        <p>“You should not need fluent English<br />to be understood.”</p>
+      <section class="statement shell">
+        <div class="statement-panel">
+          <p>Your English doesn’t have to be perfect.<br />Your message does.</p>
+        </div>
       </section>
 
-      <section class="beta" id="beta">
-        <div>
+      <section class="beta shell" id="beta">
+        <div class="beta-copy">
           <p class="eyebrow">Private beta</p>
           <h2>Help us build the writing tool you actually need.</h2>
           <p>We are inviting a small group of early users to try NativeToEnglish free and share honest feedback.</p>
         </div>
-        <a class="button button-light" href="mailto:hello@nativetoenglish.com?subject=NativeToEnglish%20private%20beta">
+        <a class="button button-light" href="mailto:abdulhady.aariyan@gmail.com?subject=NativeToEnglish%20private%20beta&amp;body=Hi%2C%20I%27d%20like%20an%20invite%20to%20the%20NativeToEnglish%20private%20beta.%0A%0AWhat%20I%20write%20in%20English%20most%3A%20%0AWhere%20I%20write%20it%20(Gmail%2C%20LinkedIn%2C%20WhatsApp...)%3A%20">
           Request an invite <span aria-hidden="true">→</span>
         </a>
       </section>
     </main>
-    <footer>
-      <a class="brand" href="#top"><span class="brand-mark">N</span><span>NativeToEnglish</span></a>
+
+    <footer class="shell">
+      <a class="brand" href="#top">
+        <img class="brand-mark" src="logo-mark.png" alt="" width="106" height="96" decoding="async" />
+        <span class="brand-name">NativeToEnglish</span>
+      </a>
       <p>Write naturally. Communicate clearly.</p>
     </footer>
+
+    <script src="script.js" defer></script>
   </body>
 </html>
