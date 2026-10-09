@@ -99,9 +99,9 @@
   const DRAFT = draft.textContent.trim();
   const REWRITES = {
     native: { text: "আমি কাল আপনার সাথে মিটিং করতে চাই।", lang: "bn" },
-    english: { text: "I would like to meet with you tomorrow.", lang: "en" },
-    formal: { text: "I would like to request a meeting with you tomorrow, if you are available.", lang: "en" },
-    academic: { text: "I would like to arrange a meeting with you tomorrow.", lang: "en" }
+    english: { text: "I'd like to meet with you tomorrow.", lang: "en" },
+    formal: { text: "I would like to meet with you tomorrow, if that works for you.", lang: "en" },
+    academic: { text: "A meeting is requested for tomorrow.", lang: "en" }
   };
 
   // Clear the finished state synchronously so it never flashes before the intro runs.
@@ -145,12 +145,29 @@
     status.textContent = "Improve";
   };
 
+  // After the intro, step through every goal on its own so a visitor sees all
+  // four without having to discover the pills. Any interaction hands control
+  // back to the visitor for good.
+  let touring = true;
+  const stopTour = () => { touring = false; };
+  const tour = async () => {
+    await wait(1800);
+    let index = pills.findIndex((pill) => pill.getAttribute("aria-selected") === "true");
+    while (touring) {
+      index = (index + 1) % pills.length;
+      await select(pills[index]);
+      await wait(2600);
+    }
+  };
+
   pills.forEach((pill, index) => {
-    pill.addEventListener("click", () => select(pill));
+    pill.addEventListener("pointerdown", stopTour);
+    pill.addEventListener("click", () => { stopTour(); select(pill); });
     pill.addEventListener("keydown", (event) => {
       const step = event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
       if (!step) return;
       event.preventDefault();
+      stopTour();
       const next = pills[(index + step + pills.length) % pills.length];
       next.focus();
       select(next);
@@ -181,6 +198,7 @@
     await wait(260);
     demo.classList.remove("is-working");
     status.textContent = "Improve";
+    tour();
   };
 
   // Hold the finished state until the hero is actually on screen.
