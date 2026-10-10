@@ -1239,7 +1239,9 @@ footer p {
 }
 
 /* Second store button: same weight as "See how it works" was, so Chrome stays the lead. */
-.play-icon { flex: none; }
+.store-logo { flex: none; display: inline-block; vertical-align: -2px; }
+.availability a { display: inline-flex; align-items: center; gap: 5px; }
+.button-primary .store-logo, .button-brand .store-logo { filter: drop-shadow(0 0 0.5px rgba(0,0,0,.25)); }
 .availability a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 .beta-actions { display: flex; flex-direction: column; gap: 12px; align-items: stretch; flex: none; }
 @media (max-width: 760px) { .beta-actions { margin-top: 24px; } }
