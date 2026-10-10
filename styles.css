@@ -1237,3 +1237,9 @@ footer p {
   line-height: 1.6;
   letter-spacing: 0;
 }
+
+/* Second store button: same weight as "See how it works" was, so Chrome stays the lead. */
+.play-icon { flex: none; }
+.availability a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.beta-actions { display: flex; flex-direction: column; gap: 12px; align-items: stretch; flex: none; }
+@media (max-width: 760px) { .beta-actions { margin-top: 24px; } }

@@ -93,11 +93,11 @@
           </p>
           <div class="hero-actions">
             <a class="button button-primary" href="https://chromewebstore.google.com/detail/nativetoenglish/hcifnjfjbeemchhjmhghefoonidcnjdm" target="_blank" rel="noopener" data-cta="chrome">Add to Chrome <span aria-hidden="true">→</span></a>
-            <a class="button button-quiet" href="#how-it-works">See how it works</a>
+            <a class="button button-quiet" href="https://play.google.com/store/apps/details?id=com.nativetoenglish.mobile" target="_blank" rel="noopener" data-cta="play"><svg class="play-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3.5v17a1 1 0 0 0 1.5.86l14.2-8.5a1 1 0 0 0 0-1.72L6.5 2.64A1 1 0 0 0 5 3.5z"/></svg>Get it on Google Play</a>
           </div>
           <p class="availability">
             <span class="availability-dot" aria-hidden="true"></span>
-            Available for the web and Android
+            Available for <a href="https://chromewebstore.google.com/detail/nativetoenglish/hcifnjfjbeemchhjmhghefoonidcnjdm" target="_blank" rel="noopener" data-cta="chrome">Chrome</a> and <a href="https://play.google.com/store/apps/details?id=com.nativetoenglish.mobile" target="_blank" rel="noopener" data-cta="play">Android</a>
           </p>
         </div>
 
@@ -206,14 +206,17 @@
       <section class="beta shell" id="beta">
         <div class="beta-panel">
           <div class="beta-copy">
-            <p class="eyebrow">Now on the Chrome Web Store</p>
+            <p class="eyebrow">Now on Chrome and Google Play</p>
             <h2>Write your next message in clear English.</h2>
             <p>Install NativeToEnglish in one click. Tell us what works and what doesn't. We read every message.</p>
           </div>
-          <a class="button button-brand" href="https://chromewebstore.google.com/detail/nativetoenglish/hcifnjfjbeemchhjmhghefoonidcnjdm" target="_blank" rel="noopener" data-cta="chrome">
-            <span class="button-label">Add to Chrome</span>
-            <span aria-hidden="true">→</span>
-          </a>
+          <div class="beta-actions">
+            <a class="button button-brand" href="https://chromewebstore.google.com/detail/nativetoenglish/hcifnjfjbeemchhjmhghefoonidcnjdm" target="_blank" rel="noopener" data-cta="chrome">
+              <span class="button-label">Add to Chrome</span>
+              <span aria-hidden="true">→</span>
+            </a>
+            <a class="button button-quiet" href="https://play.google.com/store/apps/details?id=com.nativetoenglish.mobile" target="_blank" rel="noopener" data-cta="play"><svg class="play-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3.5v17a1 1 0 0 0 1.5.86l14.2-8.5a1 1 0 0 0 0-1.72L6.5 2.64A1 1 0 0 0 5 3.5z"/></svg>Get it on Google Play</a>
+          </div>
         </div>
       </section>
     </main>
@@ -246,6 +249,12 @@
   document.querySelectorAll('a[data-cta="chrome"]').forEach(function (a, i) {
     a.addEventListener("click", function () {
       track("add_to_chrome_click", { button_index: i, text: (a.textContent || "").trim().slice(0, 40) });
+    });
+  });
+  // Google Play clicks, counted the same way as the Chrome ones
+  document.querySelectorAll('a[data-cta="play"]').forEach(function (a, i) {
+    a.addEventListener("click", function () {
+      track("play_store_click", { button_index: i, text: (a.textContent || "").trim().slice(0, 40) });
     });
   });
   // Scroll depth milestones
