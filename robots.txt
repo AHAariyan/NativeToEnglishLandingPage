@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nativetoenglish.landing.matrabhed.com/sitemap.xml
