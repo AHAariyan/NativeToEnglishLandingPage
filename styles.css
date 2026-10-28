@@ -1245,3 +1245,23 @@ footer p {
 .availability a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 .beta-actions { display: flex; flex-direction: column; gap: 12px; align-items: stretch; flex: none; }
 @media (max-width: 760px) { .beta-actions { margin-top: 24px; } }
+
+/* Email signup (hidden until configured; see the end of script.js) ------- */
+.signup { padding-bottom: clamp(84px, 11vw, 140px); }
+.su-card { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(28px, 5vw, 56px); align-items: center; padding: clamp(28px, 4vw, 48px);
+  border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow-md); position: relative; overflow: hidden; }
+.su-card::before { content: ""; position: absolute; inset: 0 0 auto; height: 3px; background: var(--brand-gradient); }
+.su-copy h2 { font-size: clamp(1.9rem, 1.1rem + 2.2vw, 2.8rem); line-height: 1.02; margin-bottom: 16px; }
+.su-copy p:not(.eyebrow) { margin: 0; color: var(--muted); line-height: 1.6; max-width: 46ch; }
+.su-label { display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: 8px; color: var(--ink); }
+.su-row { display: flex; gap: 10px; }
+.su-row input { flex: 1; min-width: 0; padding: 14px 20px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface-sunk); color: var(--ink); font: inherit; font-size: 1rem; }
+.su-row input::placeholder { color: var(--faint); }
+.su-row input:focus-visible { border-color: var(--blue); }
+.su-row .button:disabled { opacity: 0.6; cursor: default; transform: none; }
+.su-trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.su-fine { margin: 12px 0 0; font-size: 0.8125rem; color: var(--muted); }
+.su-status { margin: 10px 0 0; font-weight: 600; color: var(--mint-ink); }
+.su-status:empty { display: none; }
+@media (max-width: 860px) { .su-card { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .su-row { flex-direction: column; } }

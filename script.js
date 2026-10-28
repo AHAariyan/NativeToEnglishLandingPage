@@ -216,3 +216,30 @@
     runIntro();
   }
 })();
+
+/* ---- Email signup --------------------------------------------------------
+   The block stays hidden until data-endpoint on #signup holds the provider's
+   form URL. The form posts into a hidden iframe: no backend, no CORS. */
+(() => {
+  const box = document.getElementById("signup");
+  const url = (box?.getAttribute("data-endpoint") || "").trim();
+  if (!url.startsWith("https://")) return;
+  const form = box.querySelector("form");
+  const email = form.querySelector('input[type="email"]');
+  const trap = form.querySelector(".su-trap input");
+  const note = box.querySelector(".su-status");
+  const btn = form.querySelector("button");
+  form.action = url;
+  email.name = box.getAttribute("data-field") || "email_address";
+  box.hidden = false;
+  form.addEventListener("submit", (event) => {
+    if (trap.value) { event.preventDefault(); return; }
+    window.track?.("email_signup_submit", {});
+    setTimeout(() => {
+      form.reset();
+      btn.disabled = true;
+      note.textContent = "Almost there. Check your inbox and tap the link to confirm.";
+      setTimeout(() => { btn.disabled = false; }, 4000);
+    }, 0);
+  });
+})();

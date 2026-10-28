@@ -219,6 +219,28 @@
           </div>
         </div>
       </section>
+
+      <!-- Email list. Hidden until data-endpoint holds the provider's form URL (see the email-list README in the growth kit). -->
+      <section class="signup shell" id="signup" aria-labelledby="signup-h" data-endpoint="" data-field="email_address" hidden>
+        <div class="su-card">
+          <div class="su-copy">
+            <p class="eyebrow">Stay in touch</p>
+            <h2 id="signup-h">New features and language tips.</h2>
+            <p>What's new in NativeToEnglish, plus short tips for writing clear English from Bangla, Hindi, Urdu, Arabic, Tagalog and more.</p>
+          </div>
+          <form class="su-form" method="post" target="su-frame">
+            <label class="su-label" for="su-email">Email address</label>
+            <div class="su-row">
+              <input id="su-email" type="email" required autocomplete="email" inputmode="email" spellcheck="false" placeholder="you@example.com" aria-describedby="su-fine" />
+              <button class="button button-primary" type="submit">Subscribe</button>
+            </div>
+            <div class="su-trap" aria-hidden="true"><label>Leave this empty <input type="text" tabindex="-1" autocomplete="off" /></label></div>
+            <p class="su-fine" id="su-fine">One short email when there's something new. Unsubscribe anytime.</p>
+            <p class="su-status" role="status" aria-live="polite"></p>
+          </form>
+          <iframe name="su-frame" title="Signup response" hidden></iframe>
+        </div>
+      </section>
     </main>
 
     <footer class="shell">
@@ -229,7 +251,7 @@
       <p>Write naturally. Communicate clearly.</p>
     </footer>
 
-    <script src="script.js" defer></script>
+    <script src="script.js?v=2" defer></script>
 <script>
   // Analytics (PostHog, cookieless). Events carry product=nativetoenglish so they filter cleanly from other products.
   // Sends event names and page context only. Never the user's text.
