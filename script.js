@@ -142,7 +142,7 @@
     result.classList.remove("is-swapping");
     await wait(220);
     demo.classList.remove("is-working");
-    status.textContent = "Improve";
+    status.textContent = "Convert";
   };
 
   // After the intro, step through every goal on its own so a visitor sees all
@@ -197,7 +197,7 @@
     result.classList.remove("is-swapping");
     await wait(260);
     demo.classList.remove("is-working");
-    status.textContent = "Improve";
+    status.textContent = "Convert";
     tour();
   };
 

@@ -17,10 +17,10 @@ def faqs(p):
     lang = NAME[p["lang"]]
     out_native = p["goal"] == "native"
     return [
-        (f"Is this {p['from']} to {p['to']} converter free?", f"Yes. You get 3 free conversions a day here and in the NativeToEnglish apps, up to 1,500 characters each. No sign-up. Pro gives 500 a day."),
+        (f"Is converting {p['from']} to {p['to']} free?", f"Yes. NativeToEnglish gives 3 free conversions a day in the Android app and the Chrome extension, up to 1,500 characters each. No sign-up. Pro gives 500 a day."),
         (f"How does it convert {p['from']}?", (f"It reads what you typed in English letters, works out the {lang} words you meant, and writes them in proper {p['to']} script, fixing spelling on the way." if out_native else f"It understands your {p['from']} by meaning, not word by word, and writes natural English that keeps what you meant, your tone and every fact.")),
         ("Can I use it inside other apps?", f"Yes. The NativeToEnglish Android app adds an entry to the long-press menu in any app, and the Chrome extension adds a button to every text box. Type in {p['from']}, tap once, and it is replaced where you wrote it."),
-        ("Is my text saved?", "No. Only the text you convert is sent, only when you press the button, and it is not stored or used to train AI."),
+        ("Is my text saved?", "No. Only the text you choose to convert is sent, and it is not stored or used to train AI."),
     ]
 
 def page(p):
@@ -43,9 +43,9 @@ def page(p):
     faq = faqs(p)
     faq_html = "".join(f"<details class=\"cv-faq\"><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in faq)
     ld = [
-        {"@context": "https://schema.org", "@type": "WebApplication", "name": f"{p['from']} to {p['to']} converter", "url": url, "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "NativeToEnglish"}},
+        {"@context": "https://schema.org", "@type": "HowTo", "name": f"How to convert {p['from']} to {p['to']}", "url": url, "step": [{"@type": "HowToStep", "text": t} for t in ["Install NativeToEnglish for Chrome or Android.", f"Type in {p['from']} anywhere you write.", "Long-press your text and tap NativeToEnglish, or click the N in Chrome.", f"Pick {p['to']} and tap Replace."]]},
         {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]},
-        {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "NativeToEnglish", "item": f"{SITE}/"}, {"@type": "ListItem", "position": 2, "name": "Converters", "item": f"{SITE}/converters/"}, {"@type": "ListItem", "position": 3, "name": p["h1"], "item": url}]},
+        {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "NativeToEnglish", "item": f"{SITE}/"}, {"@type": "ListItem", "position": 2, "name": "Languages", "item": f"{SITE}/converters/"}, {"@type": "ListItem", "position": 3, "name": p["h1"], "item": url}]},
     ]
     return f'''<!doctype html>
 <html lang="en">
@@ -80,48 +80,40 @@ def page(p):
     <header class="site-header">
       <div class="shell header-inner">
         <a class="brand" href="/" aria-label="NativeToEnglish home"><img class="brand-mark" src="/logo-mark.png" alt="" width="106" height="96" decoding="async" /><span class="brand-name">NativeToEnglish</span></a>
-        <nav class="header-nav" aria-label="Main navigation"><a class="nav-link" href="/converters/">All converters</a></nav>
+        <nav class="header-nav" aria-label="Main navigation"><a class="nav-link" href="/converters/">All languages</a></nav>
       </div>
     </header>
     <main id="main" class="shell cv">
-      <nav class="cv-crumbs" aria-label="Breadcrumb"><a href="/">NativeToEnglish</a> › <a href="/converters/">Converters</a> › {e(p["h1"])}</nav>
-      <h1 class="cv-h1">{e(p["h1"])} <span>converter</span></h1>
+      <nav class="cv-crumbs" aria-label="Breadcrumb"><a href="/">NativeToEnglish</a> › <a href="/converters/">Languages</a> › {e(p["h1"])}</nav>
+      <h1 class="cv-h1">{e(p["h1"])}</h1>
       <p class="cv-lead">{e(p["lead"])}</p>
-      <form id="converter" class="cv-card" data-api="{data["api"]}" data-page="{slug}" data-goal="{p["goal"]}" data-lang="{lang}">
-        <label class="cv-label" for="cv-input">Type in {e(p["from"])}</label>
-        <textarea id="cv-input" rows="4" maxlength="1500" placeholder="{e(p["placeholder"])}" spellcheck="false"></textarea>
-        <div class="cv-row"><div class="cv-chips" aria-label="Try an example">{samples}</div><span class="cv-count" id="converter-count"></span></div>
-        <button class="button button-primary cv-go" type="submit">{e(p["button"])}</button>
-        <div class="cv-result" id="converter-result" hidden>
-          <div class="cv-label">{e(p["to"])}</div>
-          <p class="cv-output" id="converter-output"{out_attrs}></p>
-          <button class="button button-quiet button-sm" type="button" id="converter-copy">Copy</button>
-        </div>
-        <p class="cv-note" id="converter-note" role="status" hidden></p>
-        <p class="cv-free">Free: 3 conversions a day, up to 1,500 characters. No sign-up. Your text is not stored.</p>
-      </form>
-      <section class="cv-apps" aria-labelledby="apps-h">
-        <h2 id="apps-h">Do it right inside your apps</h2>
-        <p>No copying back and forth: type {e(p["from"])} in any app, tap NativeToEnglish, and your text is replaced where you wrote it.</p>
+      <section class="cv-card cv-how" aria-labelledby="how-h">
+        <h2 id="how-h">How to convert {e(p["from"])} to {e(p["to"])}</h2>
+        <ol>
+          <li>Install NativeToEnglish: <b>Add to Chrome</b> on your computer or <b>Google Play</b> on Android.</li>
+          <li>Type in {e(p["from"])} anywhere you write: chat, email, job sites, forms.</li>
+          <li>On Android, long-press your text and tap NativeToEnglish; in Chrome, click the N in the box.</li>
+          <li>Pick <b>{e(p["to"])}</b> and tap Replace. Your text is replaced right where you wrote it.</li>
+        </ol>
         <div class="hero-actions">
-          <a class="button button-primary" href="{PLAY}" target="_blank" rel="noopener" data-cta="play">Get it on Google Play</a>
-          <a class="button button-quiet" href="{CHROME}" target="_blank" rel="noopener" data-cta="chrome">Add to Chrome</a>
+          <a class="button button-primary" href="{CHROME}" target="_blank" rel="noopener" data-cta="chrome">Add to Chrome</a>
+          <a class="button button-quiet" href="{PLAY}" target="_blank" rel="noopener" data-cta="play">Get it on Google Play</a>
         </div>
+        <p class="cv-free">Free: 3 conversions a day, up to 1,500 characters. Pro: 500 a day.</p>
       </section>
       {('<section class="cv-examples" aria-labelledby="ex-h"><h2 id="ex-h">Real examples</h2><div class="cv-ex-grid">' + ex_html + '</div></section>') if ex else ''}
       <section aria-labelledby="faq-h"><h2 id="faq-h">Questions</h2>{faq_html}</section>
-      <section aria-labelledby="more-h"><h2 id="more-h">More converters</h2><ul class="cv-more">{others}</ul></section>
+      <section aria-labelledby="more-h"><h2 id="more-h">More languages</h2><ul class="cv-more">{others}</ul></section>
     </main>
     <footer class="shell"><a class="brand" href="/"><img class="brand-mark" src="/logo-mark.png" alt="" width="106" height="96" decoding="async" /><span class="brand-name">NativeToEnglish</span></a><p>Write naturally. Communicate clearly.</p></footer>
-    <script src="/converter.js?v=1" defer></script>
 {analytics}  </body>
 </html>
 '''
 
 def hub():
     items = "".join(f'<li><a class="cv-hub-card" href="/{p["slug"]}/"><b>{e(p["from"])} to {e(p["to"])}</b><span>{e(p["lead"])}</span></a></li>' for p in data["pages"])
-    t = "Free Banglish, Hinglish, Roman Urdu & Taglish Converters"
-    d = "Free online converters: Banglish to Bangla or English, Hinglish to Hindi or English, Roman Urdu to Urdu or English, Franco Arabic to Arabic, Taglish to English."
+    t = "Banglish, Hinglish, Roman Urdu & Taglish to English"
+    d = "Convert Banglish, Hinglish, Roman Urdu, Franco Arabic and Taglish to clear English or your own script, in any app, with NativeToEnglish for Chrome and Android."
     return f'''<!doctype html>
 <html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>{e(t)}</title><meta name="description" content="{e(d)}" /><link rel="canonical" href="{SITE}/converters/" />
@@ -131,7 +123,7 @@ def hub():
 <link rel="stylesheet" href="/styles.css" /><link rel="stylesheet" href="/converter.css" />
 <script>try {{ var t = localStorage.getItem("n2e-theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; }} catch (e) {{}}</script></head>
 <body><header class="site-header"><div class="shell header-inner"><a class="brand" href="/"><img class="brand-mark" src="/logo-mark.png" alt="" width="106" height="96" /><span class="brand-name">NativeToEnglish</span></a></div></header>
-<main id="main" class="shell cv"><h1 class="cv-h1">Free converters</h1><p class="cv-lead">Type the way you text. Get proper English or your own script.</p><ul class="cv-hub">{items}</ul></main>
+<main id="main" class="shell cv"><h1 class="cv-h1">Your language, your way</h1><p class="cv-lead">Type the way you text. Get clear English or your own script, right inside any app.</p><ul class="cv-hub">{items}</ul></main>
 <footer class="shell"><p>Write naturally. Communicate clearly.</p></footer>
 {analytics}</body></html>
 '''
