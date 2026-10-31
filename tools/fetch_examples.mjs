@@ -4,8 +4,9 @@
 import { readFileSync, writeFileSync } from "node:fs";
 const { api, pages } = JSON.parse(readFileSync(new URL("./converters.json", import.meta.url), "utf8"));
 const SCRIPT = { bn: /[ঀ-৿]/, hi: /[ऀ-ॿ]/, ur: /[؀-ۿ]/, ar: /[؀-ۿ]/ };
-const out = {};
-for (const page of pages) {
+const only = process.argv[2]; // optional: refetch one page, keep the rest
+const out = only ? JSON.parse(readFileSync(new URL("./examples.json", import.meta.url), "utf8")) : {};
+for (const page of pages.filter((p) => !only || p.slug === only)) {
   const id = crypto.randomUUID().replaceAll("-", "");
   out[page.slug] = [];
   for (const draft of page.samples) {

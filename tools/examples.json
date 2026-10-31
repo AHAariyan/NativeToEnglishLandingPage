@@ -1,0 +1,138 @@
+{
+ "banglish-to-bangla": [
+  {
+   "draft": "ami kal office e ashte parbo na, shorir ta bhalo nei",
+   "text": "আমি কাল অফিসে আসতে পারব না, শরীরটা ভালো নেই।",
+   "requestId": "79ef59a9-b150-496c-a740-e7f157f769de"
+  },
+  {
+   "draft": "tumi kokhon bari firbe? ma khub chinta korche",
+   "text": "তুমি কখন বাড়ি ফিরবে? মা খুব চিন্তা করছে।",
+   "requestId": "addacc69-1230-4b2b-99e1-cf58f20b70b4"
+  },
+  {
+   "draft": "kal shokal 11 tay meeting ache, deri na kore chole esho",
+   "text": "কাল সকাল ১১ টায় মিটিং আছে, দেরি না করে চলে এসো",
+   "requestId": "a0cea29f-69d4-410b-8b59-b62c8d9652e5"
+  }
+ ],
+ "banglish-to-english": [
+  {
+   "draft": "ami kal office e ashte parbo na, shorir ta bhalo nei",
+   "text": "I won't be able to come to the office tomorrow; I'm not feeling well.",
+   "requestId": "d6cb0635-6594-4c5f-967f-d44c103b382c"
+  },
+  {
+   "draft": "apnar proposal ta dekhechi, amra next week shuru korte pari",
+   "text": "I have seen your proposal; we can start next week.",
+   "requestId": "a8d66e47-de4f-4397-af07-f1e09e2377e6"
+  },
+  {
+   "draft": "dukkhito, ami deri kore reply dilam",
+   "text": "Sorry, I replied late.",
+   "requestId": "9dc038c2-b755-4a58-b58d-2b06589a9578"
+  }
+ ],
+ "hinglish-to-hindi": [
+  {
+   "draft": "kal meeting mein nahi aa paunga, tabiyat theek nahi hai",
+   "text": "कल मीटिंग में नहीं आ पाऊंगा, तबीयत ठीक नहीं है।",
+   "requestId": "cdab12b8-f95e-42f6-9e55-2973a20b21c1"
+  },
+  {
+   "draft": "Papa, aaj raat der ho jayegi, aap khana kha lena",
+   "text": "पापा, आज रात देर हो जाएगी, आप खाना खा लेना।",
+   "requestId": "3eb58f63-fe9c-427c-a477-2266fea978d9"
+  },
+  {
+   "draft": "sab log kal 11 baje office aa jana",
+   "text": "सब लोग कल 11 बजे ऑफिस आ जाना।",
+   "requestId": "0b773d3a-8c1e-4281-bd3d-bf3c8f237967"
+  }
+ ],
+ "hinglish-to-english": [
+  {
+   "draft": "sir kal main office nahi aa paunga, ghar pe thoda kaam hai",
+   "text": "Sir, I will not be able to come to the office tomorrow; I have some work at home.",
+   "requestId": "2d70d047-4b71-4cac-922e-3e183ca887f4"
+  },
+  {
+   "draft": "maine aapka project dekha, hum next week se start kar sakte hain",
+   "text": "I have seen your project; we can start from next week.",
+   "requestId": "5b1fc549-663e-4c60-912b-efa2ed5b2e00"
+  },
+  {
+   "draft": "sorry late reply ke liye, kal pakka bhej dunga",
+   "text": "Sorry for the late reply, I will definitely send it tomorrow.",
+   "requestId": "47fb1f14-d87f-4d70-895e-cb435d5fae47"
+  }
+ ],
+ "roman-urdu-to-urdu": [
+  {
+   "draft": "kal milte hain, mujhe aap se zaroori baat karni hai",
+   "text": "کل ملتے ہیں، مجھے آپ سے ضروری بات کرنی ہے۔",
+   "requestId": "b0820e98-e9f2-4cca-a9cb-7e243991da88"
+  },
+  {
+   "draft": "Ammi, aaj raat der ho jaye gi, aap khana kha lijiye ga",
+   "text": "امی، آج رات دیر ہو جائے گی، آپ کھانا کھا لیجیے گا۔",
+   "requestId": "65aaf347-7030-4198-97cf-be560de29d51"
+  },
+  {
+   "draft": "aap ki madad ka bohat shukriya",
+   "text": "آپ کی مدد کا بہت شکریہ",
+   "requestId": "6813183b-ff01-4ef5-857a-7bf37f22cb15"
+  }
+ ],
+ "roman-urdu-to-english": [
+  {
+   "draft": "sir kal office nahi aa sakunga, ghar par kuch kaam hai",
+   "text": "Sir, I cannot come to the office tomorrow; I have some work at home.",
+   "requestId": "4c2b3a87-af84-4d06-9456-2faab4f4cfc8"
+  },
+  {
+   "draft": "aap ki madad ka bohat shukriya, main kal aap ko call karunga",
+   "text": "Thank you very much for your help; I will call you tomorrow.",
+   "requestId": "59b7be78-86f1-4551-aec8-f02a67cc8a89"
+  },
+  {
+   "draft": "der se jawab dene ke liye maazrat",
+   "text": "Sorry for replying late.",
+   "requestId": "e82aa1c3-1214-45ca-af58-677897acfd3b"
+  }
+ ],
+ "franco-arabic-to-arabic": [
+  {
+   "draft": "ana 7abeb a3raf law momken net2abel bokra",
+   "text": "أنا حابب أعرف لو ممكن نتقابل بكرة",
+   "requestId": "e7317579-92c3-4ce7-a376-7c17dad638b8"
+  },
+  {
+   "draft": "mama, ana hat2akhar el naharda, et3asho enty w baba",
+   "text": "ماما، أنا هأتأخر النهاردة، اتعشوا إنتي وبابا",
+   "requestId": "834c6d62-ed1e-4068-8a06-a0e35fe63275"
+  },
+  {
+   "draft": "shokran 3ala el mosa3da",
+   "text": "شكراً على المساعدة",
+   "requestId": "610105bc-481b-403d-9bc0-959cf8c95a0d"
+  }
+ ],
+ "taglish-to-english": [
+  {
+   "draft": "sir hindi po ako makakapasok bukas, may aasikasuhin lang sa bahay",
+   "text": "Sir, I won't be able to come in tomorrow, I have things to take care of at home.",
+   "requestId": "164ccf25-bae9-4e89-b59e-065e92a40f63"
+  },
+  {
+   "draft": "pupunta ako bukas sa opisina, may meeting tayo",
+   "text": "I will go to the office tomorrow; we have a meeting.",
+   "requestId": "32a55604-1424-4a1a-a332-b6fdd6f17ead"
+  },
+  {
+   "draft": "salamat po sa tulong ninyo",
+   "text": "Thank you very much for your help.",
+   "requestId": "344e23ff-a02b-4cb0-aede-456aa2a1427c"
+  }
+ ]
+}
