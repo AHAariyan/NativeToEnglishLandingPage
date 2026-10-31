@@ -1,0 +1,41 @@
+/* Free converter pages (/<from>-to-<to>/): reuses styles.css tokens. */
+.cv { max-width: 860px; padding-top: 28px; padding-bottom: 64px; }
+.cv-crumbs { font-size: 14px; color: var(--muted, #6b7a82); margin-bottom: 14px; }
+.cv-crumbs a { color: inherit; }
+.cv-h1 { font-size: clamp(34px, 6vw, 54px); line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 12px; }
+.cv-h1 span { font-weight: 400; opacity: .55; }
+.cv-lead { font-size: 19px; line-height: 1.5; margin: 0 0 22px; color: var(--soft, #3d4f59); }
+.cv-card { border: 1px solid var(--line, #e5e3db); border-radius: 20px; padding: 20px; background: var(--card, #fff); box-shadow: 0 10px 30px rgba(11,27,51,.06); display: grid; gap: 12px; }
+.cv-label { font-size: 13px; font-weight: 700; letter-spacing: .02em; color: var(--muted, #6b7a82); }
+.cv-card textarea { width: 100%; box-sizing: border-box; font: inherit; font-size: 18px; line-height: 1.5; padding: 14px; border-radius: 14px; border: 1px solid var(--line, #e5e3db); background: transparent; color: inherit; resize: vertical; }
+.cv-row { display: flex; gap: 10px; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; }
+.cv-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.cv-chip { font: inherit; font-size: 13px; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--line, #e5e3db); background: transparent; color: inherit; cursor: pointer; }
+.cv-count { font-size: 12px; color: var(--muted, #6b7a82); white-space: nowrap; }
+.cv-go { justify-self: start; }
+.cv-go[data-busy] { opacity: .6; }
+.cv-result { border-radius: 14px; padding: 14px; background: var(--paper, #fbfaf7); border: 1px solid var(--line, #e5e3db); display: grid; gap: 8px; }
+.cv-output { font-size: 21px; line-height: 1.6; margin: 0; }
+.cv-output[lang="ur"] { font-family: "Noto Nastaliq Urdu", serif; line-height: 2.1; }
+.cv-output[lang="ar"], .cv-ex-out[lang="ar"] { font-family: "Noto Naskh Arabic", serif; }
+.cv-output[lang="bn"], .cv-ex-out[lang="bn"] { font-family: "Noto Sans Bengali", sans-serif; }
+.cv-output[lang="hi"], .cv-ex-out[lang="hi"] { font-family: "Noto Sans Devanagari", sans-serif; }
+.cv-ex-out[lang="ur"] { font-family: "Noto Nastaliq Urdu", serif; line-height: 2.1; }
+.cv-note { margin: 0; font-size: 15px; }
+.cv-note[data-kind="error"], .cv-note[data-kind="limit"] { color: #b4610e; }
+.cv-free { margin: 0; font-size: 13px; color: var(--muted, #6b7a82); }
+.cv section { margin-top: 44px; }
+.cv h2 { font-size: 26px; margin: 0 0 12px; }
+.cv-ex-grid { display: grid; gap: 14px; }
+.cv-example { margin: 0; border: 1px solid var(--line, #e5e3db); border-radius: 16px; padding: 14px 16px; }
+.cv-example figcaption { font-size: 12px; font-weight: 700; color: var(--muted, #6b7a82); }
+.cv-ex-in { margin: 4px 0 10px; font-style: italic; }
+.cv-ex-out { margin: 4px 0 0; font-size: 18px; line-height: 1.6; }
+.cv-faq { border-bottom: 1px solid var(--line, #e5e3db); padding: 12px 0; }
+.cv-faq summary { font-weight: 600; cursor: pointer; }
+.cv-faq p { margin: 8px 0 0; line-height: 1.6; }
+.cv-more { display: flex; flex-wrap: wrap; gap: 10px; padding: 0; list-style: none; }
+.cv-more a { display: inline-block; padding: 8px 12px; border-radius: 999px; border: 1px solid var(--line, #e5e3db); text-decoration: none; color: inherit; }
+.cv-hub { list-style: none; padding: 0; display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+.cv-hub-card { display: grid; gap: 6px; padding: 16px; border-radius: 16px; border: 1px solid var(--line, #e5e3db); text-decoration: none; color: inherit; height: 100%; box-sizing: border-box; }
+.cv-hub-card span { font-size: 14px; color: var(--muted, #6b7a82); }
