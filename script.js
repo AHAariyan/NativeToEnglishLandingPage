@@ -95,8 +95,9 @@
   const result = document.querySelector("#demo-result");
   const status = document.querySelector("#demo-status");
   const pills = [...document.querySelectorAll(".pill")];
+  const tabs = [...document.querySelectorAll(".lang-tab")];
   const nativePill = pills.find((pill) => pill.dataset.mode === "native");
-  if (!demo || !draft || !result || !status || !pills.length || !nativePill) return;
+  if (!demo || !draft || !result || !status || !pills.length || !tabs.length || !nativePill) return;
 
   const LANGS = [
     {"lang": "bn", "label": "বাংলা", "draft": "Ma, aj raat e bari firte deri hobe, tumi kheye nio", "native": "মা, আজ রাতে বাড়ি ফিরতে দেরি হবে, তুমি খেয়ে নিও।", "english": "Mom, I will be late coming home tonight, please eat."},
@@ -135,6 +136,7 @@
 
   const showLang = () => {
     const entry = LANGS[lang];
+    mark(tabs, tabs[lang]);
     nativePill.textContent = entry.label;
     nativePill.lang = entry.lang;
     mark(pills, pills.find((pill) => pill.dataset.mode === mode));
@@ -187,34 +189,48 @@
     return convert(id, 260);
   };
 
-  // After the intro, walk through every language on its own: English first, then
-  // the language's own script, then the next language. Tapping a pill shows that
-  // result now; the walk picks up again after a pause.
-  let paused = 0;
-  const pause = () => { paused = Date.now(); run += 1; };
+  // After the intro, walk through every language (English, then its own script)
+  // so a visitor sees them all without hunting. Any tap hands control back for good.
+  let touring = true;
+  const stopTour = () => { touring = false; run += 1; };
   const tour = async () => {
-    for (;;) {
+    const id = run;
+    while (touring && id === run) {
       await wait(2400);
-      if (Date.now() - paused < 6000) continue;
-      const id = ++run;
-      if (mode === "english") {
-        if (!(await switchMode(id, "native"))) continue;
-      } else {
-        lang = (lang + 1) % LANGS.length;
-        mode = "english";
-        if (!(await write(id))) continue;
-      }
+      if (!touring || id !== run) return;
+      if (!(await switchMode(id, "native"))) return;
+      await wait(2600);
+      if (!touring || id !== run) return;
+      lang = (lang + 1) % LANGS.length;
+      mode = "english";
+      if (!(await write(id))) return;
     }
   };
 
   const arrow = (event) => event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
 
+  tabs.forEach((tab, index) => {
+    const pick = () => {
+      stopTour();
+      if (index === lang) return;
+      lang = index;
+      write(run);
+    };
+    tab.addEventListener("click", pick);
+    tab.addEventListener("keydown", (event) => {
+      const step = arrow(event);
+      if (!step) return;
+      event.preventDefault();
+      const next = tabs[(index + step + tabs.length) % tabs.length];
+      next.focus();
+      next.click();
+    });
+  });
+
   pills.forEach((pill, index) => {
     const pick = () => {
-      pause();
-      // A tap can land mid-typing: finish the draft so the result matches it.
-      draft.textContent = LANGS[lang].draft;
-      demo.classList.remove("is-typing");
+      stopTour();
+      if (pill.dataset.mode === mode) return;
       switchMode(run, pill.dataset.mode);
     };
     pill.addEventListener("click", pick);
